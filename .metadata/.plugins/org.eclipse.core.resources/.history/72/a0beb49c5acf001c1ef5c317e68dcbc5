@@ -1,8 +1,0 @@
-package kr.co.ezenac.model;
-
-public class Test2Service {
-	
-	public static int minus() {
-		
-	}
-}
