@@ -8,7 +8,9 @@
 
 
 
-## web.xml 에서 설정하기
+![서블릿 매핑 구조](https://github.com/syhojeo/SpringMVC/blob/main/SpringMVCXml_03/ServletMapping%20%EA%B5%AC%EC%A1%B0.png)
+
+## web.xml 에서 Front Controller(기본 서블릿) 설정하기
 
 ### step1 서블릿 지정
 
