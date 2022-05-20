@@ -3,9 +3,5 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
-		
-		
-		<bean class="kr.co.ezenac.beans.DataBean1" scope="request"></bean>
-		<!-- 이름을 통한 주입을 위해 id값을 지정해줘야한다 -->
-		<bean id="requestBean2" class="kr.co.ezenac.beans.DataBean2" scope="request"></bean>
+	
 </beans>
