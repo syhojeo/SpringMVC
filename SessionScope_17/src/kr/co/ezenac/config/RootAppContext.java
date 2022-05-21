@@ -4,29 +4,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.RequestScope;
 
-import kr.co.ezenac.beans.DataBean1;
-import kr.co.ezenac.beans.DataBean2;
+
 
 //root-context.xml
 
 // 프로젝트 작업시 사용할 bean을 정의하는 클래스
 @Configuration
 public class RootAppContext {
-	@Bean
-	@RequestScope
-	//RequestScope : 새로운 요청이 왔을때 빈에 주입된다 (request에 저장하는것은 아님 -> model 등으로 해줘야함)
-	//요청이 발생될 때마다 계속 Bean 객체가 생성됨
-	public DataBean1 dataBean1() {
-		return new DataBean1();
-	}
 	
-	@Bean("requestBean2") // 이름으로 정의
-	@RequestScope
-	public DataBean2 dataBena2() {
-		return new DataBean2();
-	}
-	
-	//ComponentScan 을 이용하면 따로 Bean 등록을 하지 않아주어도 된다
 }
 
 /*

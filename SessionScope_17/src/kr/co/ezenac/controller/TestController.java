@@ -1,73 +1,49 @@
 package kr.co.ezenac.controller;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import kr.co.ezenac.beans.DataBean1;
-import kr.co.ezenac.beans.DataBean2;
-import kr.co.ezenac.beans.DataBean3;
-import kr.co.ezenac.beans.DataBean4;
-
 
 @Controller
 public class TestController {
-
-	//RootAppContext 에 존재하는 DataBean1 타입을 찾아서 자동 주입한다
-	@Autowired
-	DataBean1 requestBean1;
 	
-	@Resource(name="requestBean2") // name 을 통한 주입
-	DataBean2 requestBean2;
-	
-	@Autowired
-	DataBean3 requestBean3;
-	
-	@Resource(name="requestBean4")
-	DataBean4 requestBean4;
-	
-	//새로운 요청이 왔을때 DataBean1 이 자동 주입된다
 	@GetMapping("/test1")
-	public String test1() {
-		requestBean1.setData1("문자열1");
-		requestBean1.setData2("문자열2");
+//	public String test1(HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+	//직접 session으로 받기
+	public String test1(HttpSession session) {
+		session.setAttribute("data1", "문자열1");
 		
-		requestBean2.setData3("문자열3");
-		requestBean2.setData4("문자열4");
+		return "test1";
+	}
+	
+	@GetMapping("/test2")
+	public String test2(HttpSession session) {
+		session.setAttribute("data2", "문자열2");
 		
+		return "redirect:result1";
+	}
+	
+	@GetMapping("/test3")
+	public String test3(HttpSession session) {
+		session.setAttribute("data3", "문자열3");
 		
-		requestBean3.setData5("문자열5");
-		requestBean3.setData6("문자열6");
-		
-		requestBean4.setData7("문자열7");
-		requestBean4.setData8("문자열8");
-		//forward는 새로운 요청이 아니기 때문에 새롭게 주입되지 않는다
 		return "forward:/result1";
 	}
 	
 	@GetMapping("/result1")
-	public String result1(Model model) {
-		System.out.printf("requestBean1.data1 : %s\n", requestBean1.getData1());
-		System.out.printf("requestBean1.data2 : %s\n", requestBean1.getData2());
+//	public String result1(HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+	//직접 session으로 받기
+	public String result1(HttpSession session) {
+		String data1 = (String)session.getAttribute("data1");
+		String data2 = (String)session.getAttribute("data2");
 		
-		System.out.printf("requestBean2.data3 : %s\n", requestBean2.getData3());
-		System.out.printf("requestBean2.data4 : %s\n", requestBean2.getData4());
+		System.out.printf("data1 : %s\n", data1);
+		System.out.printf("data2 : %s\n", data2);
 		
-		System.out.printf("requestBean3.data5 : %s\n", requestBean3.getData5());
-		System.out.printf("requestBean3.data6 : %s\n", requestBean3.getData6());
-		
-		System.out.printf("requestBean4.data7 : %s\n", requestBean4.getData7());
-		System.out.printf("requestBean4.data8 : %s\n", requestBean4.getData8());
-		
-		model.addAttribute("requestBean1", requestBean1);
-		model.addAttribute("requestBean2", requestBean2);
-		model.addAttribute("requestBean3", requestBean3);
-		model.addAttribute("requestBean4", requestBean4);
-		
-		return "/result1";
+		return "result1";
 	}
 }
