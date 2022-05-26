@@ -12,6 +12,13 @@ import kr.co.ezenac.beans.DataBean1;
 @Controller
 public class TestController {
 	
+	
+	
+	/*
+	  	ServletContext
+	  	웹 어플리케이션 단위로 정보를 서버 쪽에 유지할 수 있는 방법은 ServletContext 객체를 사용하는 것이다
+
+	 */
 	@Autowired
 	ServletContext application;
 	
