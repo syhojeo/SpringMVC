@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/TeamProject/js/libs/jquery-3.6.0.min.js?ver=1"></script>
+<script type="text/javascript" src="js/libs/jquery-3.6.0.min.js?ver=1"></script>
 <script>
 var leftSec = 180;
 var timer = null;
@@ -178,7 +178,7 @@ $(document).ready(function() {
 </head>
 <body>
 <section>
-		<form action="/TeamProject/checkUser.do" method="post">
+		<form action="checkUser.do" method="post">
 		<table>
 			<tr>
 				<th colspan="2">

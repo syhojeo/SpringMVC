@@ -66,6 +66,14 @@
 			<artifactId>jstl</artifactId>
 			<version>${javax.servlet.jsp.jstl-version}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/servlets.com/cos -->
+		<dependency>
+		    <groupId>servlets.com</groupId>
+		    <artifactId>cos</artifactId>
+		    <version>05Nov2002</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -114,5 +122,10 @@
 		    <version>4.2.4</version>
 		</dependency>
 		
+		<dependency>
+		    <groupId>com.squareup.okhttp3</groupId>
+		    <artifactId>okhttp</artifactId>
+		    <version>4.9.3</version>
+		</dependency>
 	</dependencies>
 </project>

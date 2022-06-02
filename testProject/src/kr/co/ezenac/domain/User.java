@@ -1,6 +1,19 @@
 package kr.co.ezenac.domain;
 
+import java.sql.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
+
+import kr.co.ezenac.dto.UserDTO;
+
+@Component
+@RequestScope
 public class User {
+	
+	@Autowired
+	UserDTO userDTO;
 	
 	private String name;
 	private String userid;
@@ -58,8 +71,11 @@ public class User {
 		return birth;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setBirth(Date birth) {
+		if (birth == null) {
+			this.birth = null;
+		}
+		this.birth = birth.toString();
 	}
 
 	public String getEmail() {
@@ -82,8 +98,11 @@ public class User {
 		return registDate;
 	}
 
-	public void setRegistDate(String registDate) {
-		this.registDate = registDate;
+	public void setRegistDate(Date registDate) {
+		if (registDate == null) {
+			this.registDate = null;
+		}
+		this.registDate = registDate.toString();
 	}
 
 	public String getAddr() {

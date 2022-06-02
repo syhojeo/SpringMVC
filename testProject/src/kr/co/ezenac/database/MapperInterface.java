@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.co.ezenac.beans.DataBean;
+import kr.co.ezenac.domain.CoolSMSKey;
 import kr.co.ezenac.domain.User;
 
 public interface MapperInterface {
@@ -17,5 +18,5 @@ public interface MapperInterface {
 	User findUser(String userId);
 	
 	@Select("select * from smsapikey")
-	String[] getCoolSMS();
+	CoolSMSKey getCoolSMS();
 }

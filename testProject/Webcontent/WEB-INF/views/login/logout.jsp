@@ -17,7 +17,7 @@
 		//session.removeAttribute("phone");
 		//session.removeAttribute("admin");
 		session.invalidate(); 
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login");
 	%>
 <%-- 아이디<%=session.getAttribute("id") %>
 이름<%=session.getAttribute("name") %> --%>

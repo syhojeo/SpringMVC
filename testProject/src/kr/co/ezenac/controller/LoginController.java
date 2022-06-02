@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.ezenac.database.MapperInterface;
+import kr.co.ezenac.domain.CoolSMSKey;
 import kr.co.ezenac.domain.LoginStatus;
 import kr.co.ezenac.domain.User;
 
@@ -24,13 +25,13 @@ public class LoginController {
 	MapperInterface mapper;
 	
 	//로그인
-	@PostMapping("login.do")
+	@PostMapping("/login.do")
 	public String loginDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "login/login";
 		String userid = request.getParameter("userid");
 		String pwd = request.getParameter("pwd");
 		User user;
-		
+
 		try {
 			validate(userid, pwd);
 			user = mapper.findUser(userid);
@@ -49,18 +50,18 @@ public class LoginController {
 		} else if (result == LoginStatus.PASSWORD_WRONG) {
 			request.setAttribute("message", "비밀번호가 맞지 않습니다.");
 		}
-		return "forward:"+url;
+		return url;
 	}
 	
 	//아이디 찾기
-	@GetMapping("findId")
+	@GetMapping("/findId")
 	public String findId() {
 		
 		return "login/findId";
 	}
 	
 	//비밀번호 찾기
-	@GetMapping("findPassword")
+	@GetMapping("/findPassword")
 	public String findPassword() {
 		
 		return "login/findPassword";

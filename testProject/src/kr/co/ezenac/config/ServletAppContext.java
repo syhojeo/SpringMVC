@@ -22,6 +22,9 @@ import kr.co.ezenac.database.MapperInterface;
 @EnableWebMvc
 // 스캔할 패키지를 지정한다.
 @ComponentScan("kr.co.ezenac.controller")
+@ComponentScan("kr.co.ezenac.domain")
+@ComponentScan("kr.co.ezenac.beans")
+@ComponentScan("kr.co.ezenac.UserDTO")
 
 @PropertySource("/WEB-INF/properties/db.properties")
 public class ServletAppContext implements WebMvcConfigurer{
