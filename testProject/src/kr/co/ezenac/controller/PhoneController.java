@@ -8,16 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.annotation.RequestScope;
+
+import kr.co.ezenac.domain.DataStatus;
+import kr.co.ezenac.domain.Phone;
 
 
 
 @Controller
 public class PhoneController {
 	
+	@Autowired
+	Phone phone;
+	
 	@GetMapping("/sendMessage.do")
-	public String sendMessageDO(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String sendMessageDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//발송횟수
 		int sendCount = sendCount(request);
 		//발송횟수가 5회 이하일 경우에만 재발송을 해준다
@@ -27,6 +36,26 @@ public class PhoneController {
 		
 		//발송횟수가 5회 이상일 경우 문자 발송없이 join 창으로
 		return "join/phoneCheck";
+	}
+	
+	@PostMapping("/checkUser.do")
+	public String checkUserDo(HttpServletRequest request) {
+		DataStatus result;
+		String message = "";
+
+		// 1. 해당 핸드폰 번호가 있는 userid 가 있는지 DB에 접근해 확인하기
+		result = phone.checkPhoneUser(request.getParameter("phone"));
+		// 핸드폰번호가 있는 유저가 존재할때
+		if (result == DataStatus.Exist) {
+			message = "이미 회원가입이 완료된 휴대폰 번호입니다";
+		}
+		// 핸드폰번호가 있는 유저가 존재하지 않을때
+		else {
+			message = "휴대폰 번호 인증이 완료되었습니다";
+		}
+		
+		request.setAttribute("message", message);
+		return "join/phoneCheckResult";
 	}
 	
 	public int sendCount(HttpServletRequest request) {

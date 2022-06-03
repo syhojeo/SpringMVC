@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.RequestScope;
 
 import kr.co.ezenac.domain.CoolSMSKey;
+import kr.co.ezenac.domain.Phone;
 import kr.co.ezenac.domain.User;
 import kr.co.ezenac.dto.UserDTO;
 
@@ -24,9 +25,10 @@ public class RootAppContext {
 		return new User();
 	}
 	
-	//싱글톤
 	@Bean
-	public CoolSMSKey coolSMSKey() {
-		return new CoolSMSKey();
+	@RequestScope
+	public Phone phone() {
+		return new Phone();
 	}
+	
 }

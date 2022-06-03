@@ -19,4 +19,7 @@ public interface MapperInterface {
 	
 	@Select("select * from smsapikey")
 	CoolSMSKey getCoolSMS();
+	
+	@Select("select userid from usertbl where phone=#{phone}")
+	String checkUserPhone(String phone);
 }

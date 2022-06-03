@@ -23,7 +23,7 @@ public class LoginController {
 	
 	@Autowired
 	MapperInterface mapper;
-	
+
 	//로그인
 	@PostMapping("/login.do")
 	public String loginDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class LoginController {
 		String userid = request.getParameter("userid");
 		String pwd = request.getParameter("pwd");
 		User user;
-
+		
 		try {
 			validate(userid, pwd);
 			user = mapper.findUser(userid);
