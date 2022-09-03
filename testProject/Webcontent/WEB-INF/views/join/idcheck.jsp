@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="kr.co.ezenac.domain.DataStatus"  %>
+<%@ page import="kr.co.EZHOME.domain.DataStatus"  %>
 <!DOCTYPE html>
 <!-- id 중복 확인 페이지 -->
 <html>
